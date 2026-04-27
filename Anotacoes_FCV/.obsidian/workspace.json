@@ -167,12 +167,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Secção2/Dia01.md",
+                "file": "Secção2/Dia04.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dia01"
+              "title": "Dia04"
             }
           }
         ],
@@ -337,10 +337,10 @@
   },
   "active": "4bf794291965b7b6",
   "lastOpenFiles": [
-    "Secção2/Dia04.md",
     "Secção2/Dia03.md",
     "Secção2/Dia02.md",
     "Secção2/Dia01.md",
+    "Secção2/Dia04.md",
     "Secção1/Dia05.md",
     "Secção2",
     "Secção1/Dia04.md",

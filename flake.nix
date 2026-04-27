@@ -1,5 +1,5 @@
 {
-  description = "Dev Python com uv";
+  description = "C++";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -10,8 +10,17 @@
   in {
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [
-        pkgs.python311
-        pkgs.uv
+          pkgs.gcc
+          pkgs.gdb
+          pkgs.cmake
+          pkgs.ninja
+          pkgs.clang-tools
+          pkgs.valgrind
+
+          #Bibliotecas uteis do c++
+          pkgs.opencv4
+          pkgs.xtensor
+          pkgs.libtorch-bin
       ];
     };
   };
