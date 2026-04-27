@@ -32,3 +32,22 @@ Esta seção descreve o comportamento das lentes cujas superfícies se curvam pa
 - **Foco Virtual**: Devido à divergência, os raios não se cruzam fisicamente em um ponto real. Em vez disso, eles formam um **foco virtual** — um ponto atrás da lente de onde os raios divergentes _parecem_ estar emanando para um observador do outro lado.
 - **Distância Focal Negativa**: Matematicamente, as lentes côncavas seguem princípios similares às convexas, mas são tratadas como tendo uma **distância focal com valor negativo** (f<0).
 - **Simetria de Reflexão**: O texto observa que o desvio dos raios em uma lente côncava é simétrico ao de uma lente convexa de mesma curvatura, mas na direção oposta (para fora em vez de para dentro).
+
+**6.3.3 Lentes em um Telescópio (Lenses in a Telescope)**
+
+Esta seção demonstra como a combinação de lentes convexas e côncavas pode ser utilizada para ampliar a visão de objetos distantes, seguindo o design original de Galileu Galilei no início do século XVII.
+
+- **Configuração do Sistema**: Um telescópio simples é construído posicionando-se uma **lente convexa** (lente 1) com uma distância focal longa (f1​) e uma **lente côncava** (lente 2) com uma distância focal curta (f2​).
+- **Mecanismo de Foco**: As lentes são organizadas de modo que compartilhem um ponto focal comum. Isso faz com que raios paralelos vindos de um objeto distante entrem na primeira lente e saiam da segunda lente como um conjunto comprimido de raios paralelos.
+- **Cálculo da Magnificação (**M**)**: A ampliação do telescópio é definida pela razão entre o desvio angular dos raios de saída (δo​) e o desvio dos raios de entrada (δi​). Matematicamente, isso resulta na fórmula: M=f1​/f2​.
+- **Exemplo Prático**: O texto descreve um telescópio caseiro feito com tubos de papelão onde uma lente frontal de 50 cm e uma ocular de 18 mm geram uma magnificação de 27x, valor próximo aos 30x obtidos por Galileu.
+- **Impacto Histórico e Científico**: Utilizando apenas duas lentes dentro de um tubo, foi possível superar as limitações da visão humana para descobrir que a Lua possui montanhas e crateras, além de identificar as luas de Júpiter.
+
+## 6.4 Observações Finais
+
+Câmeras pinhole podem permitir que mais luz entre na abertura da câmera apenas às custas da nitidez da imagem. As lentes superam essa compensação (trade-off) ao focar todos os raios que passam através da lente, vindos de um ponto em uma superfície, para uma única posição no plano do sensor, criando uma imagem que é ao mesmo tempo nítida e brilhante.
+
+Usando aproximações de pequenos ângulos e de lente delgada, projetamos uma superfície de lente para ter essa propriedade de foco, mostrando que a lente deve ter uma forma parabólica ou esférica.
+
+Considerações geométricas permitem cálculos de profundidade de campo, bem como o projeto de um telescópio simples.
+
