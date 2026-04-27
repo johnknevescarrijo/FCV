@@ -1,0 +1,88 @@
+{
+  description = "Ambiente completo para Foundations of Computer Vision (MIT) em C++";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            # == Fundamentos ==
+            opencv4                # Leitura/escrita/visualização de imagens
+            xtensor                # Arrays estilo NumPy
+            xtensor-blas           # Integração com BLAS/LAPACK
+            cimg                   # Alternativa leve para fundamentos (opcional)
+
+            # == Redes Neurais ==
+            libtorch               # PyTorch para C++ (atenção: ~1.5GB)
+            # libtorch-bin        # Alternativa pré-compilada (caso libtorch demore)
+
+            # == Álgebra Linear e Otimização (SLAM) ==
+            eigen                  # Base de álgebra linear
+            suitesparse            # Solvers esparsos (para Ceres/g2o)
+            openblas               # Implementação BLAS de alta performance
+            ceres-solver           # Otimização não-linear (Google)
+            g2o                    # Otimização de grafos (SLAM visual)
+            gtsam                  # Fatores de grafos (GTSAM)
+            sophus                 # Geometria de Lie SO(3)/SE(3)
+
+            # == Processamento 3D e visualização ==
+            pcl                    # Point Cloud Library
+            pangolin               # Visualização 3D (opcional, útil para SLAM)
+            mesa                   # Dependência gráfica para Pangolin/OpenCV
+
+            # == Dependências de suporte ==
+            boost                  # Bibliotecas auxiliares
+            gflags                 # Parsing de argumentos (usado pelo Ceres)
+            glog                   # Logging (usado pelo Ceres)
+            eigen3                 # Garantia de versão compatível
+
+            # == Ferramentas de build e desenvolvimento ==
+            cmake                  # Gerador de builds
+            ninja                  # Build rápido (opcional, recomendado)
+            gcc                    # Compilador C++ (ou clang)
+            gdb                    # Debugger
+            valgrind               # Detecção de vazamentos
+            pkg-config             # Encontrar bibliotecas instaladas
+            git                    # Controle de versão
+            gnumake                # Make tradicional
+            bear                   # Gera compile_commands.json (para LSP)
+            python3                # Útil para scripts auxiliares
+            python3Packages.numpy  # Para comparação com Python (opcional)
+          ];
+
+          # Ambiente de shell
+          shellHook = ''
+            echo "📚 Ambiente pronto para Foundations of Computer Vision"
+            echo "   Bibliotecas principais:"
+            echo "   - OpenCV $(pkg-config --modversion opencv4 2>/dev/null || echo 'instalado')"
+            echo "   - Eigen $(pkg-config --modversion eigen3 2>/dev/null || echo 'instalado')"
+            echo "   - Ceres $(pkg-config --modversion ceres 2>/dev/null || echo 'instalado')"
+            echo "   - g2o $(pkg-config --modversion g2o 2>/dev/null || echo 'instalado')"
+            echo "   - GTSAM $(pkg-config --modversion gtsam 2>/dev/null || echo 'instalado')"
+            echo "   - Sophus $(pkg-config --modversion sophus 2>/dev/null || echo 'instalado')"
+            echo ""
+            echo "💡 Use 'cmake -B build -G Ninja' para configurar seus projetos"
+            echo "   As bibliotecas estão em ${pkgs.lib.getLib pkgs.opencv4}"
+          '';
+
+          # Variáveis de ambiente para encontrar bibliotecas (se necessário)
+          CMAKE_PREFIX_PATH = with pkgs; lib.makeSearchPath "lib/cmake" [
+            opencv4 eigen ceres-solver g2o gtsam sophus pcl pangolin libtorch
+          ];
+          LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [
+            opencv4 libtorch suitesparse openblas g2o gtsam ceres-solver pcl pangolin
+          ];
+          PKG_CONFIG_PATH = with pkgs; lib.makeSearchPath "lib/pkgconfig" [
+            opencv4 eigen3 ceres-solver g2o gtsam sophus pcl
+          ];
+        };
+      });
+}
