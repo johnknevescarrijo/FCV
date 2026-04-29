@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ComputerVisionProject)
+project(Fundations)
 
 # =========================
-# Configuração C++
+# C++
 # =========================
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Exporta compile_commands.json
+# Gera compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # =========================
@@ -19,10 +19,16 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(OpenCV REQUIRED)
 
 # =========================
-# Torch (libtorch)
+# LibTorch
 # =========================
 
 find_package(Torch REQUIRED)
+
+# =========================
+# xtensor
+# =========================
+
+find_package(xtensor REQUIRED)
 
 # =========================
 # Executável
@@ -33,7 +39,7 @@ add_executable(app
 )
 
 # =========================
-# Includes
+# Includes extras (opcional)
 # =========================
 
 target_include_directories(app PRIVATE
@@ -45,12 +51,13 @@ target_include_directories(app PRIVATE
 # =========================
 
 target_link_libraries(app PRIVATE
+    xtensor
     ${OpenCV_LIBS}
     ${TORCH_LIBRARIES}
 )
 
 # =========================
-# Flags do Torch
+# Flags do LibTorch
 # =========================
 
 target_compile_options(app PRIVATE
@@ -63,11 +70,14 @@ target_compile_options(app PRIVATE
 
 find_package(Threads REQUIRED)
 
-target_link_libraries(app PRIVATE Threads::Threads)
+target_link_libraries(app PRIVATE
+    Threads::Threads
+)
 
 # =========================
-# Mensagens úteis
+# Mensagens
 # =========================
 
 message(STATUS "OpenCV encontrado")
 message(STATUS "Torch encontrado")
+message(STATUS "xtensor encontrado")

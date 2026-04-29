@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/john/Programacao/FCV/Fundations/build",
+  "command": "/nix/store/mw4gasdvwgscgpxpzihjgchfhs3hhqhn-clang-wrapper-21.1.8/bin/clang++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -isystem /nix/store/n0flbxn0w105xr0d95rj605llxg6812f-opencv-4.13.0/include/opencv4 -isystem /nix/store/c3affbriawr0977cggi4wmpm2c2i47k3-libtorch-2.9.0-dev/include/torch/csrc/api/include -std=gnu++20 -o CMakeFiles/app.dir/src/magnitude_borda.cpp.o -c /home/john/Programacao/FCV/Fundations/src/magnitude_borda.cpp",
+  "file": "/home/john/Programacao/FCV/Fundations/src/magnitude_borda.cpp",
+  "output": "CMakeFiles/app.dir/src/magnitude_borda.cpp.o"
+}
+]

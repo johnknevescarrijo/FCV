@@ -1,0 +1,3 @@
+/home/john/Programacao/FCV/Fundations/build/CMakeFiles/app.dir
+/home/john/Programacao/FCV/Fundations/build/CMakeFiles/edit_cache.dir
+/home/john/Programacao/FCV/Fundations/build/CMakeFiles/rebuild_cache.dir
